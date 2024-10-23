@@ -15,6 +15,10 @@ import model.User;
 
 public class SignupController {
 	@FXML
+	private TextField firstName;
+	@FXML
+	private TextField lastName;
+	@FXML
 	private TextField username;
 	@FXML
 	private TextField password;
@@ -41,7 +45,7 @@ public class SignupController {
 			if (!username.getText().isEmpty() && !password.getText().isEmpty()) {
 				User user;
 				try {
-					user = model.getUserDao().createUser(username.getText(), password.getText());
+					user = model.getUserDao().createUser(firstName.getText(),lastName.getText(),username.getText(), password.getText());
 					if (user != null) {
 						status.setText("Created " + user.getUsername());
 						status.setTextFill(Color.GREEN);
@@ -67,7 +71,7 @@ public class SignupController {
 	}
 	
 	public void showStage(Pane root) {
-		Scene scene = new Scene(root, 400, 400);
+		Scene scene = new Scene(root, 650, 450);
 		stage.setScene(scene);
 		stage.setResizable(false);
 		stage.setTitle("Sign up");

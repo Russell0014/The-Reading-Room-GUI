@@ -7,13 +7,24 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" spacing="10.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <children>
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="250.0" text="The Reading Room" textAlignment="CENTER">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="250.0" textAlignment="CENTER">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
       <Label prefHeight="17.0" prefWidth="250.0" text="First Name" />
-      <TextField fx:id="username1" maxWidth="250.0" />
+      <TextField fx:id="firstName" maxWidth="250.0" />
       <Label prefHeight="17.0" prefWidth="250.0" text="Last Name" />
-      <TextField fx:id="username11" maxWidth="250.0" />
+      <TextField fx:id="lastName" maxWidth="250.0" />
       <Label prefHeight="17.0" prefWidth="250.0" text="Username" />
       <TextField fx:id="username" maxWidth="250.0">
          <VBox.margin>
@@ -25,7 +36,7 @@
             <Insets bottom="10.0" />
          </VBox.margin>
       </PasswordField>
-      <Label fx:id="status" prefHeight="16.0" prefWidth="249.0" />
+      <Label fx:id="status" alignment="CENTER" prefHeight="16.0" prefWidth="249.0" />
       <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="20.0">
          <children>
             <Button fx:id="createUser" mnemonicParsing="false" text="Create user" />
