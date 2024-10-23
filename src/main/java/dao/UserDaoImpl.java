@@ -40,6 +40,8 @@ public class UserDaoImpl implements UserDao {
 			try (ResultSet rs = stmt.executeQuery()) {
 				if (rs.next()) {
 					User user = new User();
+					user.setFirstName(rs.getString("firstName"));
+					user.setLastName(rs.getString("lastName"));
 					user.setUsername(rs.getString("username"));
 					user.setPassword(rs.getString("password"));
 					return user;

@@ -2,6 +2,7 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -19,9 +20,7 @@ public class HomeController {
 	private MenuItem updateProfile; // // Corresponds to the Menu item "updateProfile" in HomeView.fxml
 	@FXML
 	private Text welcome;
-	@FXML
-	private VBox vbox;
-	
+
 	public HomeController(Stage parentStage, Model model) {
 		this.stage = new Stage();
 		this.parentStage = parentStage;
@@ -29,10 +28,12 @@ public class HomeController {
 	}
 	
 	// Add your code to complete the functionality of the program
-	
-	
-	
-	
+	@FXML
+	public void initialize() {
+		welcome.setText("Welcome, " + model.getCurrentUser().getFirstName());
+		System.out.println(model.getCurrentUser().getFirstName());
+	}
+
 	
 	public void showStage(Pane root) {
 		Scene scene = new Scene(root, 650, 450);
