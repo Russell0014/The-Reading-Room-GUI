@@ -11,27 +11,38 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="450.0" prefWidth="544.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="450.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
   <children>
     <MenuBar fx:id="menu" prefHeight="25.0" prefWidth="870.0">
       <menus>
-            <Menu fx:id="profile" mnemonicParsing="false" text="Welcome {User user}">
+            <Menu fx:id="profile1" mnemonicParsing="false" text="Home" />
+            <Menu fx:id="profile" mnemonicParsing="false" text="Profile">
               <items>
                 <MenuItem fx:id="viewProfile" mnemonicParsing="false" text="View my profile" />
                   <MenuItem fx:id="updateProfile" mnemonicParsing="false" text="Update my profile" />
               </items>
             </Menu>
-            <Menu fx:id="profile11" mnemonicParsing="false" text="Shop" />
-            <Menu fx:id="profile1" mnemonicParsing="false" text="Cart" />
+            <Menu mnemonicParsing="false" text="Shop" />
+            <Menu mnemonicParsing="false" text="Cart" />
       </menus>
          <VBox.margin>
             <Insets />
          </VBox.margin>
     </MenuBar>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Top 5 Most Popular Books" textAlignment="CENTER" textOrigin="CENTER" wrappingWidth="543.955078125">
+      <Text fx:id="welcome" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome" textAlignment="CENTER" textOrigin="CENTER" wrappingWidth="649.955078125">
          <VBox.margin>
             <Insets top="40.0" />
          </VBox.margin>
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" textOrigin="CENTER" wrappingWidth="649.955078125">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Top 5 Most Popular Books" textAlignment="CENTER" textOrigin="CENTER" wrappingWidth="649.955078125">
          <font>
             <Font size="20.0" />
          </font>

@@ -4,6 +4,8 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Model;
 
@@ -15,6 +17,10 @@ public class HomeController {
 	private MenuItem viewProfile; // Corresponds to the Menu item "viewProfile" in HomeView.fxml
 	@FXML
 	private MenuItem updateProfile; // // Corresponds to the Menu item "updateProfile" in HomeView.fxml
+	@FXML
+	private Text welcome;
+	@FXML
+	private VBox vbox;
 	
 	public HomeController(Stage parentStage, Model model) {
 		this.stage = new Stage();
