@@ -48,10 +48,10 @@
       </Text>
       <HBox alignment="TOP_CENTER" prefHeight="217.0" prefWidth="544.0">
          <children>
-            <TableView prefHeight="197.0" prefWidth="360.0">
+            <TableView fx:id="tableView" prefHeight="500.0" prefWidth="500.0">
               <columns>
-                <TableColumn prefWidth="145.0" text="Book Name" />
-                <TableColumn minWidth="5.0" prefWidth="103.0" text="Author" />
+                <TableColumn fx:id="bookName" prefWidth="145.0" text="Book Name" />
+                <TableColumn fx:id="bookAuthor" minWidth="5.0" prefWidth="103.0" text="Author" />
               </columns>
                <HBox.margin>
                   <Insets top="20.0" />

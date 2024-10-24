@@ -17,4 +17,38 @@ public class Book {
         this.price = price;
         this.soldCopies = soldCopies;
     }
+
+    // Getter for soldCopies
+    public int getSoldCopies() {
+        return soldCopies;
+    }
+
+    // Other getters (optional)
+    public String getTitle() {
+        return title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public int getNumberOfCopies() {
+        return numberOfCopies;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    // toString() method (optional)
+    @Override
+    public String toString() {
+        return "Book{" +
+                "title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                ", numberOfCopies=" + numberOfCopies +
+                ", price=" + price +
+                ", soldCopies=" + soldCopies +
+                '}';
+    }
 }
