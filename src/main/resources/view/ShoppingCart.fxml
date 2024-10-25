@@ -14,18 +14,27 @@
 
 <VBox prefHeight="450.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <MenuBar fx:id="menu1" prefHeight="25.0" prefWidth="870.0">
+      <MenuBar fx:id="menubar" prefHeight="25.0" prefWidth="870.0">
          <menus>
-            <Menu fx:id="profile12" mnemonicParsing="false" text="Home" />
-            <Menu fx:id="profile1" mnemonicParsing="false" text="Profile">
+            <Menu fx:id="menu" mnemonicParsing="false" text="Menu">
                <items>
-                  <MenuItem fx:id="viewProfile1" mnemonicParsing="false" text="View my profile" />
-                  <MenuItem fx:id="updateProfile1" mnemonicParsing="false" text="Update my profile" />
+                  <MenuItem fx:id="home" mnemonicParsing="false" text="Home"/>
+                  <MenuItem fx:id="shop" mnemonicParsing="false" text="Shop"/>
+                  <MenuItem fx:id="cart" mnemonicParsing="false" text="Cart"/>
+                  <MenuItem fx:id="orders" mnemonicParsing="false" text="Orders"/>
+                  <MenuItem fx:id="logout" mnemonicParsing="false" text="Logout"/>
                </items>
             </Menu>
-            <Menu mnemonicParsing="false" text="Shop" />
-            <Menu mnemonicParsing="false" text="Cart" />
+            <Menu fx:id="profile" mnemonicParsing="false" text="Profile">
+               <items>
+                  <MenuItem fx:id="viewProfile" mnemonicParsing="false" text="View my profile"/>
+                  <MenuItem fx:id="updateProfile" mnemonicParsing="false" text="Update my profile"/>
+               </items>
+            </Menu>
          </menus>
+         <VBox.margin>
+            <Insets/>
+         </VBox.margin>
       </MenuBar>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cart" textAlignment="CENTER" textOrigin="CENTER" underline="true" wrappingWidth="649.955078125">
          <VBox.margin>
