@@ -1,11 +1,13 @@
 package controller;
 
+import java.io.IOException;
+
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -21,9 +23,13 @@ public class HomeController {
 	private Stage stage;
 	private Stage parentStage;
 	@FXML
-	private MenuItem viewProfile; // Corresponds to the Menu item "viewProfile" in HomeView.fxml
+	private MenuItem viewProfile;
 	@FXML
-	private MenuItem updateProfile; // // Corresponds to the Menu item "updateProfile" in HomeView.fxml
+	private MenuItem updateProfile; 
+	@FXML
+	private MenuItem home;
+	@FXML
+	private MenuItem shop; 
 	@FXML
 	private Text welcome;
 	@FXML
@@ -45,6 +51,8 @@ public class HomeController {
 		welcome.setText("Welcome, " + model.getCurrentUser().getFirstName());
 		System.out.println(model.getCurrentUser().getFirstName());
 		loadTop5Books();
+
+		home.setOnAction(e -> handleHomeAction());
 	}
 
 	
@@ -66,4 +74,18 @@ public class HomeController {
 		// Set the items in the TableView
 		tableView.setItems(topBooks);
 	}
+
+	private void handleHomeAction() {
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/HomeView.fxml"));
+    HomeController homeController = new HomeController(stage, model);
+    loader.setController(homeController);
+
+    try {
+        VBox root = loader.load();
+        homeController.showStage(root);
+        stage.close();
+    } catch (IOException ex) {
+        throw new RuntimeException(ex);
+    }
+}
 }
