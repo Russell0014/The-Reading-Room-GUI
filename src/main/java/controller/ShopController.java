@@ -23,6 +23,8 @@ public class ShopController {
     @FXML
     private MenuItem shop;
     @FXML
+    private MenuItem logout;
+    @FXML
     private TableView<Book> tableView; // Specify the type
     @FXML
     private TableColumn<Book, String> bookName; // Specify the type
@@ -40,6 +42,8 @@ public class ShopController {
     public void initialize() {
         home.setOnAction(e -> NavigationHandler.handleHomeAction(stage, model));
         shop.setOnAction(e -> NavigationHandler.handleShopAction(stage, model));
+        logout.setOnAction(e -> NavigationHandler.handleLoginAction(stage, model));
+
     }
 
     public void showStage(Pane root) {

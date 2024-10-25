@@ -1,6 +1,7 @@
 package controller;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.Model;
@@ -36,4 +37,20 @@ public class NavigationHandler {
             throw new RuntimeException(ex);
         }
     }
+
+    public static void handleLoginAction(Stage stage, Model model) {
+        model.setCurrentUser(null);
+        try {
+            stage.close();
+            FXMLLoader loader = new FXMLLoader(NavigationHandler.class.getResource("/view/LoginView.fxml"));
+            LoginController loginController = new LoginController(stage, model);
+            loader.setController(loginController);
+            GridPane root = loader.load();
+            loginController.showStage(root);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+
 }
