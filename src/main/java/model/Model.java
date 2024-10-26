@@ -3,10 +3,7 @@ package model;
 import java.sql.SQLException;
 import java.util.List;
 
-import dao.BookShopDao;
-import dao.UserDao;
-import dao.UserDaoImpl;
-import dao.CartDao;
+import dao.*;
 
 public class Model {
 	private UserDao userDao;
@@ -14,12 +11,14 @@ public class Model {
 	private BookShop bookShop;
 	private BookShopDao bookShopDao;
 	private CartDao cartDao;
+	private OrdersDao ordersDao;
 
 	public Model() {
 		userDao = new UserDaoImpl();
 		bookShopDao = new BookShopDao();
 		bookShop = new BookShop();
 		cartDao = new CartDao();
+		ordersDao = new OrdersDao();
 	}
 
 	public void setup() throws SQLException {
@@ -27,6 +26,7 @@ public class Model {
 		bookShopDao.setup();
 		bookShopDao.setupBooks();
 		cartDao.createTable();
+		ordersDao.createTable();
 		bookShop.loadBooksIntoBookShop(bookShopDao, bookShop);
 	}
 
@@ -96,5 +96,23 @@ public class Model {
 			System.out.println("No user is currently logged in.");
 		}
 		return total;
+	}
+
+	// Orders-related methods
+	public List<Orders> viewOrders() {
+		if (currentUser != null) {
+			return ordersDao.viewOrders(currentUser.getUsername());
+		} else {
+			System.out.println("No user is currently logged in.");
+			return null;
+		}
+	}
+
+	public void addOrder(String username, String bookName, int quantity, double price) {
+		if (currentUser != null) {
+			ordersDao.addOrder(username, bookName, quantity, price);
+		} else {
+			System.out.println("No user is currently logged in.");
+		}
 	}
 }

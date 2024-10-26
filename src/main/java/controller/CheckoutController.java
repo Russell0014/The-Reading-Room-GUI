@@ -151,8 +151,14 @@ public class CheckoutController {
                 return;
             }
 
+            // Loop through cart items and add them to orders
+            model.viewCart().forEach(cartItem -> {
+                model.addOrder(model.getCurrentUser().getUsername(), cartItem.getBookName(), cartItem.getQuantity(), cartItem.getPrice());
+            });
+
             // If all validations pass
             model.clearCart();
+
             error.setStyle("-fx-text-fill: green;"); // Success message in green
             error.setText("Payment successful!");
 

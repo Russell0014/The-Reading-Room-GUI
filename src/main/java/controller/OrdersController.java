@@ -34,7 +34,7 @@ public class OrdersController {
     @FXML
     private MenuItem logout;
     @FXML
-    private TableView<Cart> tableView;
+    private TableView<Orders> tableView;
     @FXML
     private TableColumn<Orders, String> bookName;
     @FXML
@@ -60,6 +60,8 @@ public class OrdersController {
         orders.setOnAction(e -> NavigationHandler.handleOrdersAction(stage, model));
         logout.setOnAction(e -> NavigationHandler.handleLoginAction(stage, model));
 
+        loadOrders();
+
     }
 
     public void showStage(Pane root) {
@@ -68,6 +70,20 @@ public class OrdersController {
         stage.setResizable(false);
         stage.setTitle("Shop");
         stage.show();
+    }
+
+    public void loadOrders() {
+        List<Orders> orders = model.viewOrders();
+        ObservableList<Orders> observableList = FXCollections.observableArrayList(orders);
+
+        bookName.setCellFactory(WrappingTableCell::new);
+
+        bookName.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getBookName()));
+        bookPrice.setCellValueFactory(data -> new SimpleStringProperty(String.valueOf(data.getValue().getPrice())));
+        orderQuantity.setCellValueFactory(data -> new SimpleStringProperty(String.valueOf(data.getValue().getQuantity())));
+        orderDate.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getOrderDate()));
+
+        tableView.setItems(observableList);
     }
 
 
