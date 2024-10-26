@@ -33,5 +33,11 @@ public class BookShop {
         }
     }
 
+    public ArrayList<Book> getBooks() {
+        return books.stream()
+                .sorted(Comparator.comparing(Book::getTitle))  // Sort by title
+                .collect(Collectors.toCollection(ArrayList::new));  // Collect the result as an ArrayList
+    }
+
 
 }
