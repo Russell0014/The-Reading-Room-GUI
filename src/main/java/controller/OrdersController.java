@@ -5,11 +5,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import model.Cart;
 import model.Model;
 import model.Orders;
 import utils.WrappingTableCell;
@@ -79,7 +80,9 @@ public class OrdersController {
         bookName.setCellFactory(WrappingTableCell::new);
 
         bookName.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getBookName()));
-        bookPrice.setCellValueFactory(data -> new SimpleStringProperty(String.valueOf(data.getValue().getPrice())));
+        bookPrice.setCellValueFactory(cellData ->
+                new SimpleStringProperty(String.format("%.2f",
+                        cellData.getValue().getPrice())));
         orderQuantity.setCellValueFactory(data -> new SimpleStringProperty(String.valueOf(data.getValue().getQuantity())));
         orderDate.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getOrderDate()));
 

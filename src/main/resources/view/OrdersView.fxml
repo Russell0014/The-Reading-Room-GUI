@@ -63,7 +63,7 @@
                </columnResizePolicy>
                <columns>
                   <TableColumn fx:id="bookName" prefWidth="145.0" text="Book Name" />
-                  <TableColumn fx:id="bookPrice" minWidth="5.0" prefWidth="103.0" text="Price" />
+                  <TableColumn fx:id="bookPrice" minWidth="5.0" prefWidth="103.0" text="Price $" />
                   <TableColumn fx:id="orderQuantity" minWidth="5.0" prefWidth="103.0" text="Quantity" />
                   <TableColumn fx:id="orderDate" minWidth="5.0" prefWidth="103.0" text="Date" />
                </columns>
