@@ -153,6 +153,8 @@ public class CheckoutController {
             error.setStyle("-fx-text-fill: green;"); // Success message in green
             error.setText("Payment successful!");
 
+            NavigationHandler.handleThankyouAction(stage, model);
+
         });
 
     }

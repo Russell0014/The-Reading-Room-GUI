@@ -81,4 +81,18 @@ public class NavigationHandler {
         }
     }
 
+    public static void handleThankyouAction(Stage stage, Model model) {
+        FXMLLoader loader = new FXMLLoader(NavigationHandler.class.getResource("/view/ThankyouView.fxml"));
+        ThankyouController thankyouController = new ThankyouController(stage, model);
+        loader.setController(thankyouController);
+
+        try {
+            VBox root = loader.load();
+            thankyouController.showStage(root);
+            stage.close();
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+
 }
