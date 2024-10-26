@@ -5,6 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -28,6 +29,8 @@ public class HomeController {
     private MenuItem shop;
     @FXML
     private MenuItem logout;
+    @FXML
+    private Button buyBooks;
     @FXML
     private Text welcome;
     @FXML
@@ -53,6 +56,10 @@ public class HomeController {
         home.setOnAction(e -> NavigationHandler.handleHomeAction(stage, model));
         shop.setOnAction(e -> NavigationHandler.handleShopAction(stage, model));
         logout.setOnAction(e -> NavigationHandler.handleLoginAction(stage, model));
+
+        buyBooks.setOnAction(e -> {
+            NavigationHandler.handleShopAction(stage, model);
+        });
 
     }
 

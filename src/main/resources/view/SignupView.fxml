@@ -39,8 +39,8 @@
       <Label fx:id="status" alignment="CENTER" prefHeight="16.0" prefWidth="249.0" />
       <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="20.0">
          <children>
-            <Button fx:id="createUser" mnemonicParsing="false" text="Create user" />
-            <Button fx:id="close" mnemonicParsing="false" text="Close" />
+            <Button fx:id="createUser" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Create user" />
+            <Button fx:id="close" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Close" />
          </children>
       </HBox>
    </children>
