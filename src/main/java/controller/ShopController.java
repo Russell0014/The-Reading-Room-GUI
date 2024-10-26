@@ -21,8 +21,7 @@ public class ShopController {
     private Stage parentStage;
     private Map<Book, TextField> quantityFields = new HashMap<>();
 
-    @FXML
-    private MenuItem viewProfile;
+
     @FXML
     private MenuItem updateProfile;
     @FXML

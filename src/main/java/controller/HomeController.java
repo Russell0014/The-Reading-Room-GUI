@@ -20,8 +20,7 @@ public class HomeController {
     private Model model;
     private Stage stage;
     private Stage parentStage;
-    @FXML
-    private MenuItem viewProfile;
+
     @FXML
     private MenuItem updateProfile;
     @FXML
