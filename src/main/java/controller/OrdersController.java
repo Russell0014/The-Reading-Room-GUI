@@ -63,6 +63,8 @@ public class OrdersController {
 
         loadOrders();
 
+        total.setText(String.format("Total: $ %.2f", model.getOrderTotal()));
+
     }
 
     public void showStage(Pane root) {
