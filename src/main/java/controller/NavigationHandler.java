@@ -95,4 +95,18 @@ public class NavigationHandler {
         }
     }
 
+    public static void handleOrdersAction(Stage stage, Model model) {
+        FXMLLoader loader = new FXMLLoader(NavigationHandler.class.getResource("/view/OrdersView.fxml"));
+        OrdersController ordersController = new OrdersController(stage, model);
+        loader.setController(ordersController);
+
+        try {
+            VBox root = loader.load();
+            ordersController.showStage(root);
+            stage.close();
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+
 }

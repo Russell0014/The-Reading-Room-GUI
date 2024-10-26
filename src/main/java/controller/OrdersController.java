@@ -1,24 +1,26 @@
 package controller;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import model.Cart;
 import model.Model;
+import model.Orders;
+import utils.WrappingTableCell;
 
-import java.util.Calendar;
+import java.util.List;
 
-public class ThankyouController {
+public class OrdersController {
     private Model model;
     private Stage stage;
     private Stage parentStage;
-    @FXML
-    private MenuItem viewProfile;
+
     @FXML
     private MenuItem updateProfile;
     @FXML
@@ -31,10 +33,20 @@ public class ThankyouController {
     private MenuItem orders;
     @FXML
     private MenuItem logout;
+    @FXML
+    private TableView<Cart> tableView;
+    @FXML
+    private TableColumn<Orders, String> bookName;
+    @FXML
+    private TableColumn<Orders, String> bookPrice;
+    @FXML
+    private TableColumn<Orders, String> orderQuantity;
+    @FXML
+    private TableColumn<Orders, String> orderDate;
+    @FXML
+    private Text total;
 
-
-
-    public ThankyouController(Stage parentStage, Model model) {
+    public OrdersController(Stage parentStage, Model model) {
         this.stage = new Stage();
         this.parentStage = parentStage;
         this.model = model;
@@ -42,7 +54,6 @@ public class ThankyouController {
 
     @FXML
     public void initialize() {
-
         home.setOnAction(e -> NavigationHandler.handleHomeAction(stage, model));
         shop.setOnAction(e -> NavigationHandler.handleShopAction(stage, model));
         cart.setOnAction(e -> NavigationHandler.handleCartAction(stage, model));
@@ -55,7 +66,9 @@ public class ThankyouController {
         Scene scene = new Scene(root, 650, 450);
         stage.setScene(scene);
         stage.setResizable(false);
-        stage.setTitle("Home");
+        stage.setTitle("Shop");
         stage.show();
     }
+
+
 }

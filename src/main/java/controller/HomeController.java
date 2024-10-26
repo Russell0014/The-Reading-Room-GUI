@@ -31,6 +31,8 @@ public class HomeController {
     @FXML
     private MenuItem cart;
     @FXML
+    private MenuItem orders;
+    @FXML
     private MenuItem logout;
     @FXML
     private Button buyBooks;
@@ -58,6 +60,7 @@ public class HomeController {
         home.setOnAction(e -> NavigationHandler.handleHomeAction(stage, model));
         shop.setOnAction(e -> NavigationHandler.handleShopAction(stage, model));
         cart.setOnAction(e -> NavigationHandler.handleCartAction(stage, model));
+        orders.setOnAction(e -> NavigationHandler.handleOrdersAction(stage, model));
         logout.setOnAction(e -> NavigationHandler.handleLoginAction(stage, model));
 
         buyBooks.setOnAction(e -> {

@@ -28,6 +28,8 @@ public class CheckoutController {
     @FXML
     private MenuItem cart;
     @FXML
+    private MenuItem orders;
+    @FXML
     private MenuItem logout;
     @FXML
     private Text total;
@@ -58,6 +60,7 @@ public class CheckoutController {
         home.setOnAction(e -> NavigationHandler.handleHomeAction(stage, model));
         shop.setOnAction(e -> NavigationHandler.handleShopAction(stage, model));
         cart.setOnAction(e -> NavigationHandler.handleCartAction(stage, model));
+        orders.setOnAction(e -> NavigationHandler.handleOrdersAction(stage, model));
         logout.setOnAction(e -> NavigationHandler.handleLoginAction(stage, model));
 
         total.setText("Total: $ " + model.getCartTotal());
