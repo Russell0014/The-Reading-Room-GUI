@@ -17,22 +17,22 @@
          <menus>
             <Menu fx:id="menu" mnemonicParsing="false" text="Menu">
                <items>
-                  <MenuItem fx:id="home" mnemonicParsing="false" text="Home"/>
-                  <MenuItem fx:id="shop" mnemonicParsing="false" text="Shop"/>
-                  <MenuItem fx:id="cart" mnemonicParsing="false" text="Cart"/>
-                  <MenuItem fx:id="orders" mnemonicParsing="false" text="Orders"/>
-                  <MenuItem fx:id="logout" mnemonicParsing="false" text="Logout"/>
+                  <MenuItem fx:id="home" mnemonicParsing="false" text="Home" />
+                  <MenuItem fx:id="shop" mnemonicParsing="false" text="Shop" />
+                  <MenuItem fx:id="cart" mnemonicParsing="false" text="Cart" />
+                  <MenuItem fx:id="orders" mnemonicParsing="false" text="Orders" />
+                  <MenuItem fx:id="logout" mnemonicParsing="false" text="Logout" />
                </items>
             </Menu>
             <Menu fx:id="profile" mnemonicParsing="false" text="Profile">
                <items>
-                  <MenuItem fx:id="viewProfile" mnemonicParsing="false" text="View my profile"/>
-                  <MenuItem fx:id="updateProfile" mnemonicParsing="false" text="Update my profile"/>
+                  <MenuItem fx:id="viewProfile" mnemonicParsing="false" text="View my profile" />
+                  <MenuItem fx:id="updateProfile" mnemonicParsing="false" text="Update my profile" />
                </items>
             </Menu>
          </menus>
          <VBox.margin>
-            <Insets/>
+            <Insets />
          </VBox.margin>
       </MenuBar>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Checkout" textAlignment="CENTER" textOrigin="CENTER" underline="true" wrappingWidth="649.955078125">
@@ -81,7 +81,7 @@
       </HBox>
       <HBox alignment="CENTER" fillHeight="false" prefHeight="45.0" prefWidth="544.0">
          <children>
-            <Button mnemonicParsing="false" text="Pay" />
+            <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Pay" />
          </children>
       </HBox>
    </children>
