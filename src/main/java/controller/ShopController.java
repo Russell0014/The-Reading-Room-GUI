@@ -162,7 +162,7 @@ public class ShopController {
                     int quantity = Integer.parseInt(quantityField.getText());
 
                     // cart logic:
-                    // model.addToCart(book, quantity);
+                    model.addBookToCart(book.getTitle(), quantity, book.getPrice());
 
                     // Show confirmation alert
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
