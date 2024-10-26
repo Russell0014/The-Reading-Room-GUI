@@ -4,13 +4,13 @@ public class Book {
     private String title;
     private String author;
     private  int numberOfCopies;
-    private float price;
+    private Double price;
     private int soldCopies;
 
     public Book(){
     }
 
-    public Book(String title, String author, int numberOfCopies, float price, int soldCopies) {
+    public Book(String title, String author, int numberOfCopies, Double price, int soldCopies) {
         this.title = title;
         this.author = author;
         this.numberOfCopies = numberOfCopies;
@@ -36,7 +36,7 @@ public class Book {
         return numberOfCopies;
     }
 
-    public float getPrice() {
+    public Double getPrice() {
         return price;
     }
 

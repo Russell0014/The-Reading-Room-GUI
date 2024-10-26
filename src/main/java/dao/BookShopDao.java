@@ -76,7 +76,7 @@ public class BookShopDao {
                 String title = rs.getString("title");
                 String author = rs.getString("author");
                 int numberOfCopies = rs.getInt("numberOfCopies");
-                float price = rs.getFloat("price");
+                Double price = rs.getDouble("price");
                 int soldCopies = rs.getInt("soldCopies");
 
                 // Create a new Book object and add it to the list
