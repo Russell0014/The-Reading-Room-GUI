@@ -46,14 +46,13 @@ public class CartDao {
     }
 
     public void updateQuantityAndPrice(String username, String bookName, int additionalQuantity, double price) {
-        String sql = "UPDATE cart SET quantity = quantity + ?, price = ? * (quantity + ?) WHERE username = ? AND bookName = ?";
+        String sql = "UPDATE cart SET quantity = quantity + ?, price = ?  WHERE username = ? AND bookName = ?";
         try (Connection connection = Database.getConnection();
              PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, additionalQuantity);
             stmt.setDouble(2, price);
-            stmt.setInt(3, additionalQuantity);
-            stmt.setString(4, username);
-            stmt.setString(5, bookName);
+            stmt.setString(3, username);
+            stmt.setString(4, bookName);
             stmt.executeUpdate();
             System.out.println("Updated quantity for book in cart: " + bookName);
         } catch (SQLException e) {
@@ -71,7 +70,7 @@ public class CartDao {
                 stmt.setString(1, username);
                 stmt.setString(2, bookName);
                 stmt.setInt(3, quantity);
-                stmt.setDouble(4, price * quantity);
+                stmt.setDouble(4, price );
                 stmt.executeUpdate();
                 System.out.println("Book added to cart: " + bookName);
             } catch (SQLException e) {

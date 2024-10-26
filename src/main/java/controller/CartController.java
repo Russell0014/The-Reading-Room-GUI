@@ -8,16 +8,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
-import model.Book;
 import model.Cart;
 import model.Model;
 import utils.WrappingTableCell;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class CartController {
     private Model model;
@@ -89,7 +85,7 @@ public class CartController {
         // Set up the price column (price * quantity)
         bookPrice.setCellValueFactory(cellData ->
                 new SimpleStringProperty(String.format("%.2f",
-                        cellData.getValue().getPrice() * cellData.getValue().getQuantity())));
+                        cellData.getValue().getPrice())));
 
         // Set up the quantity column with text fields
         quantityColumn.setCellFactory(col -> new TableCell<Cart, TextField>() {
@@ -126,8 +122,7 @@ public class CartController {
                     if (!newValue) {  // Focus lost
                         if (textField.getText().isEmpty()) {
                             textField.setText("1");
-                        }
-                        else if (Integer.parseInt(textField.getText())<1) {
+                        } else if (Integer.parseInt(textField.getText()) < 1) {
                             textField.setText("1");
 
                         }
@@ -195,11 +190,5 @@ public class CartController {
         // Update the total Text component
         this.total.setText(String.format("Total: $%.2f", total));
     }
-
-//    public void loadCart() {
-//        // Add your code here
-//
-//    }
-
 
 }
