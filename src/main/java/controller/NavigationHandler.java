@@ -53,4 +53,19 @@ public class NavigationHandler {
     }
 
 
+    public static void handleCartAction(Stage stage, Model model) {
+        FXMLLoader loader = new FXMLLoader(NavigationHandler.class.getResource("/view/CartView.fxml"));
+        CartController cartController = new CartController(stage, model);
+        loader.setController(cartController);
+
+        try {
+            VBox root = loader.load();
+            cartController.showStage(root);
+            stage.close();
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+
+
 }

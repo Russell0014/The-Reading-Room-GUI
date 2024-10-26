@@ -14,6 +14,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Book;
 import model.Model;
+import utils.WrappingTableCell;
 
 public class HomeController {
     private Model model;
@@ -27,6 +28,8 @@ public class HomeController {
     private MenuItem home;
     @FXML
     private MenuItem shop;
+    @FXML
+    private MenuItem cart;
     @FXML
     private MenuItem logout;
     @FXML
@@ -55,6 +58,7 @@ public class HomeController {
 
         home.setOnAction(e -> NavigationHandler.handleHomeAction(stage, model));
         shop.setOnAction(e -> NavigationHandler.handleShopAction(stage, model));
+        cart.setOnAction(e -> NavigationHandler.handleCartAction(stage, model));
         logout.setOnAction(e -> NavigationHandler.handleLoginAction(stage, model));
 
         buyBooks.setOnAction(e -> {
@@ -76,6 +80,7 @@ public class HomeController {
         ObservableList<Book> topBooks = FXCollections.observableArrayList(model.getBookShop().getTop5BooksSold());
 
         // Set up the TableView columns
+        bookName.setCellFactory(WrappingTableCell::new);
         bookName.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTitle()));
         bookAuthor.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getAuthor()));
 

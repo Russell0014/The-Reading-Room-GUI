@@ -7,11 +7,11 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import model.Book;
 import model.Model;
+import utils.WrappingTableCell;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -29,6 +29,8 @@ public class ShopController {
     private MenuItem home;
     @FXML
     private MenuItem shop;
+    @FXML
+    private MenuItem cart;
     @FXML
     private MenuItem logout;
     @FXML
@@ -53,6 +55,7 @@ public class ShopController {
         loadBooks();
         home.setOnAction(e -> NavigationHandler.handleHomeAction(stage, model));
         shop.setOnAction(e -> NavigationHandler.handleShopAction(stage, model));
+        cart.setOnAction(e -> NavigationHandler.handleCartAction(stage, model));
         logout.setOnAction(e -> NavigationHandler.handleLoginAction(stage, model));
     }
 
@@ -68,38 +71,7 @@ public class ShopController {
         ObservableList<Book> books = FXCollections.observableArrayList(model.getBookShop().getBooks());
 
         // Set up the TableView columns
-
-        // Configure the book name column with text wrapping
-        bookName.setCellFactory(column -> {
-            TableCell<Book, String> cell = new TableCell<Book, String>() {
-                private Text text = new Text();
-
-                @Override
-                protected void updateItem(String item, boolean empty) {
-                    super.updateItem(item, empty);
-
-                    if (empty || item == null) {
-                        setGraphic(null);
-                    } else {
-                        text.setText(item);
-                        text.setWrappingWidth(column.getWidth() - 10); // 10 pixels padding
-                        text.setTextAlignment(TextAlignment.LEFT);
-                        setGraphic(text);
-                    }
-                }
-            };
-
-            // Update wrapping width when column is resized
-            column.widthProperty().addListener((observable, oldValue, newValue) -> {
-                Text text = (Text) cell.getGraphic();
-                if (text != null) {
-                    text.setWrappingWidth(newValue.doubleValue() - 10);
-                }
-            });
-
-            return cell;
-        });
-
+        bookName.setCellFactory(WrappingTableCell::new);
         bookName.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTitle()));
 
         bookPrice.setCellValueFactory(cellData -> new SimpleStringProperty(String.format("%.2f", cellData.getValue().getPrice())));
@@ -131,6 +103,9 @@ public class ShopController {
                     if (!newValue) {  // Focus lost
                         if (textField.getText().isEmpty()) {
                             textField.setText("1");
+                        } else if (Integer.parseInt(textField.getText()) < 1) {
+                            textField.setText("1");
+
                         }
                     }
                 });
