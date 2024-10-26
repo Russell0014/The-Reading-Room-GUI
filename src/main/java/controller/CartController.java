@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import model.Book;
 import model.Cart;
 import model.Model;
 import utils.WrappingTableCell;
@@ -74,6 +75,18 @@ public class CartController {
                 alert.showAndWait();
                 return;
             }
+
+            // Check stock before checkout
+            String outOfStockBook = checkStock();
+            if (outOfStockBook != null) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Insufficient Stock");
+                alert.setHeaderText(null);
+                alert.setContentText("Please remove " + outOfStockBook + " from cart (insufficient stock)");
+                alert.showAndWait();
+                return;
+            }
+
             NavigationHandler.handleCheckoutAction(stage, model);
         });
     }
@@ -205,6 +218,22 @@ public class CartController {
         }
         // Update the total Text component
         this.total.setText(String.format("Total: $%.2f", total));
+    }
+
+    private String checkStock() {
+        List<Book> allBooks = model.getBookShop().getBooks();
+
+        for (Cart cartItem : tableView.getItems()) {
+            for (Book book : allBooks) {
+                if (book.getTitle().equals(cartItem.getBookName())) {
+                    if (cartItem.getQuantity() > book.getNumberOfCopies()) {
+                        return cartItem.getBookName();
+                    }
+                    break;
+                }
+            }
+        }
+        return null;
     }
 
 }
