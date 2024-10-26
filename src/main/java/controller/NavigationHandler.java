@@ -67,5 +67,18 @@ public class NavigationHandler {
         }
     }
 
+    public static void handleCheckoutAction(Stage stage, Model model) {
+        FXMLLoader loader = new FXMLLoader(NavigationHandler.class.getResource("/view/CheckoutView.fxml"));
+        CheckoutController checkoutController = new CheckoutController(stage, model);
+        loader.setController(checkoutController);
+
+        try {
+            VBox root = loader.load();
+            checkoutController.showStage(root);
+            stage.close();
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
 
 }

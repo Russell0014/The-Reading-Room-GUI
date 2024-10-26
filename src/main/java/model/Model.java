@@ -84,4 +84,17 @@ public class Model {
 			System.out.println("No user is currently logged in.");
 		}
 	}
+
+	public double getCartTotal() {
+		double total = 0.0;
+		if (currentUser != null) {
+			List<Cart> cartItems = cartDao.viewCart(currentUser.getUsername());
+			for (Cart item : cartItems) {
+				total += item.getPrice() * item.getQuantity();
+			}
+		} else {
+			System.out.println("No user is currently logged in.");
+		}
+		return total;
+	}
 }

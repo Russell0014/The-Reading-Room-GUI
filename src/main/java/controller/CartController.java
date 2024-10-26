@@ -44,6 +44,8 @@ public class CartController {
     private TableColumn<Cart, Button> deleteFromCartColumn;
     @FXML
     private Text total;
+    @FXML
+    private Button checkout;
 
 
     public CartController(Stage parentStage, Model model) {
@@ -60,6 +62,10 @@ public class CartController {
         logout.setOnAction(e -> NavigationHandler.handleLoginAction(stage, model));
 
         loadCart();
+
+        checkout.setOnAction(e -> {
+            NavigationHandler.handleCheckoutAction(stage, model);
+        });
     }
 
     public void showStage(Pane root) {

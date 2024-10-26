@@ -43,7 +43,7 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Total: $" textAlignment="CENTER" wrappingWidth="649.7294921875">
+      <Text fx:id="total" strokeType="OUTSIDE" strokeWidth="0.0" text="Total: $" textAlignment="CENTER" wrappingWidth="649.7294921875">
          <VBox.margin>
             <Insets top="20.0" />
          </VBox.margin>
