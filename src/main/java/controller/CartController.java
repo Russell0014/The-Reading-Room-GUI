@@ -67,6 +67,14 @@ public class CartController {
         loadCart();
 
         checkout.setOnAction(e -> {
+            if (tableView.getItems().isEmpty()) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Cart is empty");
+                alert.setContentText("Please add items to the cart before checking out.");
+                alert.showAndWait();
+                return;
+            }
             NavigationHandler.handleCheckoutAction(stage, model);
         });
     }
