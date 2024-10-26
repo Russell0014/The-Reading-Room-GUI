@@ -49,7 +49,6 @@ public class HomeController {
         this.model = model;
     }
 
-    // Add your code to complete the functionality of the program
     @FXML
     public void initialize() {
         welcome.setText("Welcome, " + model.getCurrentUser().getFirstName());

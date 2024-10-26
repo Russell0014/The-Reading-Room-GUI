@@ -34,7 +34,6 @@ public class CheckoutController {
         this.model = model;
     }
 
-    // Add your code to complete the functionality of the program
     @FXML
     public void initialize() {
 
@@ -46,7 +45,6 @@ public class CheckoutController {
         total.setText("Total: $ " + model.getCartTotal());
 
     }
-
 
     public void showStage(Pane root) {
         Scene scene = new Scene(root, 650, 450);
