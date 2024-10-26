@@ -1,5 +1,7 @@
 package model;
 
+import javafx.scene.control.CheckBox;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -11,6 +13,8 @@ public class Orders {
     private int quantity;
     private Double price;
     private String orderDate;
+
+    private CheckBox selected;
 
     public Orders(int orderID, String username, String bookName, int quantity, Double price, String orderDate) {
         this.orderID = orderID;
@@ -46,6 +50,14 @@ public class Orders {
     public int getQuantity() { return quantity; }
 
     public Double getPrice() { return price; }
+
+    public CheckBox getSelected() {
+        return selected;
+    }
+
+    public void setSelected(CheckBox selected) {
+        this.selected = selected;
+    }
 
 
 }

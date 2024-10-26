@@ -62,6 +62,7 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
                <columns>
+                  <TableColumn fx:id="select" prefWidth="60.0" resizable="false" text="Select" />
                   <TableColumn fx:id="bookName" prefWidth="145.0" text="Book Name" />
                   <TableColumn fx:id="bookPrice" minWidth="5.0" prefWidth="103.0" text="Price $" />
                   <TableColumn fx:id="orderQuantity" minWidth="5.0" prefWidth="103.0" text="Quantity" />
@@ -77,7 +78,7 @@
       </Text>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Export" />
+            <Button fx:id="exportButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Export" />
          </children>
       </HBox>
    </children>

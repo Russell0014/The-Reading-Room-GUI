@@ -5,17 +5,21 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.Model;
 import model.Orders;
 import utils.WrappingTableCell;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class OrdersController {
     private Model model;
@@ -39,6 +43,8 @@ public class OrdersController {
     @FXML
     private TableColumn<Orders, String> bookName;
     @FXML
+    private TableColumn<Orders, CheckBox> select;
+    @FXML
     private TableColumn<Orders, String> bookPrice;
     @FXML
     private TableColumn<Orders, String> orderQuantity;
@@ -46,6 +52,8 @@ public class OrdersController {
     private TableColumn<Orders, String> orderDate;
     @FXML
     private Text total;
+    @FXML
+    private Button exportButton;
 
     public OrdersController(Stage parentStage, Model model) {
         this.stage = new Stage();
@@ -65,6 +73,8 @@ public class OrdersController {
 
         total.setText(String.format("Total: $ %.2f", model.getOrderTotal()));
 
+        exportButton.setOnAction(e -> handleExport());
+
     }
 
     public void showStage(Pane root) {
@@ -77,9 +87,14 @@ public class OrdersController {
 
     public void loadOrders() {
         List<Orders> orders = model.viewOrders();
+        // Add checkbox to each order
+        orders.forEach(order -> order.setSelected(new CheckBox()));
         ObservableList<Orders> observableList = FXCollections.observableArrayList(orders);
 
         bookName.setCellFactory(WrappingTableCell::new);
+
+        // Configure the select column to show checkboxes
+        select.setCellValueFactory(new PropertyValueFactory<>("selected"));
 
         bookName.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getBookName()));
         bookPrice.setCellValueFactory(cellData ->
@@ -89,6 +104,46 @@ public class OrdersController {
         orderDate.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getOrderDate()));
 
         tableView.setItems(observableList);
+    }
+
+    private void handleExport() {
+        List<Orders> selectedOrders = tableView.getItems().stream()
+                .filter(order -> order.getSelected().isSelected())
+                .collect(Collectors.toList());
+
+        if (selectedOrders.isEmpty()) {
+            // Show an alert that no orders are selected
+            return;
+        }
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save Orders CSV");
+        fileChooser.getExtensionFilters().add(
+                new FileChooser.ExtensionFilter("CSV Files", "*.csv"));
+        File file = fileChooser.showSaveDialog(stage);
+
+        if (file != null) {
+            exportToCSV(selectedOrders, file);
+        }
+    }
+
+    private void exportToCSV(List<Orders> orders, File file) {
+        try (FileWriter writer = new FileWriter(file)) {
+            // Write CSV header
+            writer.write("Book Name,Price,Quantity,Order Date\n");
+
+            // Write order data
+            for (Orders order : orders) {
+                writer.write(String.format("\"%s\",%f,%d,\"%s\"\n",
+                        order.getBookName(),
+                        order.getPrice(),
+                        order.getQuantity(),
+                        order.getOrderDate()));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Show error alert
+        }
     }
 
 
