@@ -9,9 +9,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import model.Book;
+import model.Cart;
 import model.Model;
 
 import java.util.Calendar;
+import java.util.List;
 
 public class CheckoutController {
     private Model model;
@@ -151,9 +154,32 @@ public class CheckoutController {
             }
 
             // Loop through cart items and add them to orders
-            model.viewCart().forEach(cartItem -> {
-                model.addOrder(model.getCurrentUser().getUsername(), cartItem.getBookName(), cartItem.getQuantity(), cartItem.getPrice());
-            });
+//            model.viewCart().forEach(cartItem -> {
+//                model.addOrder(model.getCurrentUser().getUsername(), cartItem.getBookName(), cartItem.getQuantity(), cartItem.getPrice());
+//            });
+
+            // Get current cart items and all books
+            List<Cart> cartItems = model.viewCart();
+            List<Book> allBooks = model.getBookShop().getBooks();
+
+            // Update book quantities and add to orders
+            for (Cart cartItem : cartItems) {
+                // Add to orders
+                model.addOrder(model.getCurrentUser().getUsername(),
+                        cartItem.getBookName(),
+                        cartItem.getQuantity(),
+                        cartItem.getPrice());
+
+                // Update book quantity in database
+                for (Book book : allBooks) {
+                    if (book.getTitle().equals(cartItem.getBookName())) {
+                        int newQuantity = book.getNumberOfCopies() - cartItem.getQuantity();
+                        model.updateBookQuantity(book.getTitle(), newQuantity);
+                        break;
+                    }
+                }
+            }
+
 
             // If all validations pass
             model.clearCart();

@@ -88,6 +88,19 @@ public class BookShopDao {
         return books;  // Return the list of books
     }
 
+    public void updateBookQuantity(String title, int newQuantity) throws SQLException {
+        String sql = "UPDATE " + TABLE_NAME + " SET numberOfCopies = ? WHERE title = ?";
+
+        try (Connection connection = Database.getConnection();
+             PreparedStatement stmt = connection.prepareStatement(sql)) {
+
+            stmt.setInt(1, newQuantity);
+            stmt.setString(2, title);
+
+            stmt.executeUpdate();
+        }
+    }
+
 
 
 }

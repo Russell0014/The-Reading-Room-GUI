@@ -130,4 +130,12 @@ public class Model {
         return total;
 
     }
+
+    public void updateBookQuantity(String title, int newQuantity) {
+        try {
+            bookShopDao.updateBookQuantity(title, newQuantity);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
