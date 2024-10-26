@@ -102,7 +102,7 @@ public class ShopController {
 
         bookName.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTitle()));
 
-        bookPrice.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getPrice())));
+        bookPrice.setCellValueFactory(cellData -> new SimpleStringProperty(String.format("%.2f", cellData.getValue().getPrice())));
 
         // Configure the quantity column with text field cells
         quantityColumn.setCellFactory(col -> new TableCell<Book, TextField>() {
