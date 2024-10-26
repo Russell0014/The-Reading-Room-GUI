@@ -34,16 +34,7 @@ public class Orders {
     public String getBookName() {return bookName;}
 
     public String getOrderDate() {
-        SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd");
-        try {
-            Date date = inputFormat.parse(orderDate)
-;
-            return outputFormat.format(date);
-        } catch (ParseException e) {
-            e.printStackTrace();
-            return null; // or handle the error as needed
-        }
+       return orderDate;
     }
 
 

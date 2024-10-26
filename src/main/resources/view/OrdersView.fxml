@@ -53,7 +53,7 @@
       </Text>
       <HBox alignment="TOP_CENTER" prefHeight="217.0" prefWidth="544.0">
          <children>
-            <TableView fx:id="tableView" prefHeight="300.0" prefWidth="500.0">
+            <TableView fx:id="tableView" prefHeight="300.0" prefWidth="600.0">
                <HBox.margin>
                   <Insets top="20.0" />
                </HBox.margin>
@@ -61,11 +61,11 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
                <columns>
-                  <TableColumn fx:id="select" prefWidth="60.0" resizable="false" text="Select" />
-                  <TableColumn fx:id="bookName" prefWidth="145.0" text="Book Name" />
-                  <TableColumn fx:id="bookPrice" minWidth="5.0" prefWidth="103.0" text="Price $" />
-                  <TableColumn fx:id="orderQuantity" minWidth="5.0" prefWidth="103.0" text="Quantity" />
-                  <TableColumn fx:id="orderDate" minWidth="5.0" prefWidth="103.0" text="Date" />
+                  <TableColumn fx:id="select" editable="false" prefWidth="60.0" resizable="false" sortable="false" text="Select" />
+                  <TableColumn fx:id="bookName" editable="false" prefWidth="145.0" sortable="false" text="Book Name" />
+                  <TableColumn fx:id="bookPrice" editable="false" minWidth="5.0" prefWidth="50.0" sortable="false" text="Price $" />
+                  <TableColumn fx:id="orderQuantity" editable="false" minWidth="5.0" prefWidth="50.0" sortable="false" text="Quantity" />
+                  <TableColumn fx:id="orderDate" editable="false" minWidth="5.0" prefWidth="100.0" sortType="DESCENDING" text="Date" />
                </columns>
             </TableView>
          </children>
