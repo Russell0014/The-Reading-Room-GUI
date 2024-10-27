@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -31,7 +32,7 @@ public class AdminController {
     private TableColumn<Book, String> bookAuthor;
 
     @FXML
-    private TableColumn<Book, Double> bookPrice;
+    private TableColumn<Book, String> bookPrice;
 
     @FXML
     private TableColumn<Book, Integer> sold;
@@ -62,7 +63,7 @@ public class AdminController {
 
         bookName.setCellValueFactory(new PropertyValueFactory<>("title"));
         bookAuthor.setCellValueFactory(new PropertyValueFactory<>("author"));
-        bookPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
+        bookPrice.setCellValueFactory(cellData -> new SimpleStringProperty(String.format("%.2f", cellData.getValue().getPrice())));
         sold.setCellValueFactory(new PropertyValueFactory<>("soldCopies"));
 
         stock.setCellFactory(column -> new TableCell<Book, Integer>() {
