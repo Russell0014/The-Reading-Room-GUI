@@ -49,15 +49,29 @@ public class LoginController {
 					if (user != null) {
 						model.setCurrentUser(user);
 						try {
-							FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/HomeView.fxml"));
-							HomeController homeController = new HomeController(stage, model);
-							
-							loader.setController(homeController);
-							VBox root = loader.load();
-	
-							homeController.showStage(root);
-							stage.close();
-						}catch (IOException e) {
+                            FXMLLoader loader;
+                            if (model.getCurrentUser() != null && model.getCurrentUser().getUsername().equals("admin")) {
+                                loader = new FXMLLoader(getClass().getResource("/view/AdminView.fxml"));
+								AdminController adminController = new AdminController(stage, model);
+
+								loader.setController(adminController);
+								VBox root = loader.load();
+
+								adminController.showStage(root);
+                            }
+							else{
+                                loader = new FXMLLoader(getClass().getResource("/view/HomeView.fxml"));
+								HomeController homeController = new HomeController(stage, model);
+
+								loader.setController(homeController);
+								VBox root = loader.load();
+
+								homeController.showStage(root);
+                            }
+                            stage.close();
+
+
+                        }catch (IOException e) {
 							message.setText(e.getMessage());
 						}
 						
