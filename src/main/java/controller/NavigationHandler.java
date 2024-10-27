@@ -109,4 +109,18 @@ public class NavigationHandler {
         }
     }
 
+    public static void handleUpdateProfileAction(Stage stage, Model model) {
+        FXMLLoader loader = new FXMLLoader(NavigationHandler.class.getResource("/view/UpdateProfileView.fxml"));
+        UpdateProfileController updateProfileController = new UpdateProfileController(stage, model);
+        loader.setController(updateProfileController);
+
+        try {
+            VBox root = loader.load();
+            updateProfileController.showStage(root);
+            stage.close();
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+
 }

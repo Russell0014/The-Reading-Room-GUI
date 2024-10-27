@@ -66,4 +66,19 @@ public class UserDaoImpl implements UserDao {
 			return new User(firstName, lastName, username, password);
 		} 
 	}
+
+	@Override
+	public void updateUser(String username, String firstName, String lastName, String password) throws SQLException {
+		String sql = "UPDATE " + TABLE_NAME +
+				" SET firstName = ?, lastName = ?, password = ? " +
+				"WHERE username = ?";
+		try (Connection connection = Database.getConnection();
+			 PreparedStatement stmt = connection.prepareStatement(sql)) {
+			stmt.setString(1, firstName);
+			stmt.setString(2, lastName);
+			stmt.setString(3, password);
+			stmt.setString(4, username);
+			stmt.executeUpdate();
+		}
+	}
 }

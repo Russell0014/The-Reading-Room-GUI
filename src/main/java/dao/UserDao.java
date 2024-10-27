@@ -14,4 +14,6 @@ public interface UserDao {
 	void setup() throws SQLException;
 	User getUser(String username, String password) throws SQLException;
 	User createUser(String firstName, String lastName, String username, String password) throws SQLException;
+	void updateUser(String username, String firstName, String lastName, String password) throws SQLException;
+
 }

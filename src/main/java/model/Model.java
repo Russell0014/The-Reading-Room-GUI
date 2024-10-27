@@ -42,6 +42,22 @@ public class Model {
         currentUser = user;
     }
 
+    public void updateUserProfile(String firstName, String lastName, String newPassword) throws SQLException {
+        if (currentUser != null) {
+            // Use provided values or keep existing ones if blank
+            String firstNameToUse = firstName.isEmpty() ? currentUser.getFirstName() : firstName;
+            String lastNameToUse = lastName.isEmpty() ? currentUser.getLastName() : lastName;
+            String passwordToUse = newPassword.isEmpty() ? currentUser.getPassword() : newPassword;
+
+            userDao.updateUser(currentUser.getUsername(), firstNameToUse, lastNameToUse, passwordToUse);
+
+            // Update current user object
+            currentUser.setFirstName(firstNameToUse);
+            currentUser.setLastName(lastNameToUse);
+            currentUser.setPassword(passwordToUse);
+        }
+    }
+
     public BookShop getBookShop() {
         return bookShop;
     }

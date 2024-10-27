@@ -61,6 +61,7 @@ public class HomeController {
         cart.setOnAction(e -> NavigationHandler.handleCartAction(stage, model));
         orders.setOnAction(e -> NavigationHandler.handleOrdersAction(stage, model));
         logout.setOnAction(e -> NavigationHandler.handleLoginAction(stage, model));
+        updateProfile.setOnAction(e -> NavigationHandler.handleUpdateProfileAction(stage, model));
 
         buyBooks.setOnAction(e -> {
             NavigationHandler.handleShopAction(stage, model);
