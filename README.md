@@ -20,11 +20,6 @@ TheReadingRoom is a Java-FX based application designed to manage/order books.
    cd assignment2-Russell0014
    ```
 
-2. Build the project using Maven:
-   ```sh
-   mvn clean install
-   ```
-
 ## Structure
 
 The project structure:
