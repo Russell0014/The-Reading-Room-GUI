@@ -16,8 +16,8 @@ TheReadingRoom is a Java-FX based application designed to manage/order books.
 1. Clone the repository:
 
    ```sh
-   git clone https://github.com/FurtherJavaProgramming/assignment2-Russell0014
-   cd assignment2-Russell0014
+   git clone https://github.com/Russell0014/The-Reading-Room-GUI.git
+   cd cd The-Reading-Room-GUI/
    ```
 
 ## Structure
@@ -49,11 +49,7 @@ src/
 
 1. Add the files in the lib folder to IDE.
 
-2. Run the application:
-
-   ```sh
-   run main.java
-   ```
+2. Run the application (main.java).
 
 3. The application will open a GUI where you can manage and order book orders.
 
@@ -78,4 +74,4 @@ src/
 
 ## Made by
 
-- [Russell Sheikh (s4018548)](https://github.com/Russell0014)
+- [Russell Sheikh](https://github.com/Russell0014)
